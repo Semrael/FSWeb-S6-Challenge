@@ -5,18 +5,25 @@ import Karakterler from "./components/Karakterler";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState("");
 
-  const ChangeHandler = (e) => {
+  const changeHandler = (e) => {
     const { value } = e.target;
     setSearch(value);
   };
 
   useEffect(() => {
-    axios.get`https://swapi.dev/api/people/`
+    axios
+      .get("https://swapi.dev/api/people/")
       .then((res) => {
         console.log(res.data);
-        setCharacters(res.data);
+        const searchResult = res.data.filter((item) => {
+          return (
+            item.name.toLowerCase().includes(search.toLowerCase()) ||
+            item.hair_color.toLowerCase().includes(search.toLowerCase())
+          );
+        });
+        setCharacters(searchResult);
       })
       .catch((err) => {
         console.error(err);
@@ -31,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header search={search} changeHandler={ChangeHandler} />
+      <Header search={search} changeHandler={changeHandler} />
       <Karakterler characters={characters} />
     </div>
   );

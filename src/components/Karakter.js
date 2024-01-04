@@ -19,7 +19,9 @@ export default function Karakter(props) {
           <StyDiv>Gender:{character.gender}</StyDiv>
           <StyDiv>Height:{character.height}</StyDiv>
           <StyDiv>Mass:{character.mass}</StyDiv>
-          <Filmler />
+          {character.films.map((item) => {
+            return <Filmler name={item} />;
+          })}
         </AccordionBody>
       </AccordionItem>
     </div>

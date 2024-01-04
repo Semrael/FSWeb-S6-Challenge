@@ -4,7 +4,7 @@ import { Accordion } from "reactstrap";
 import Karakter from "./Karakter";
 
 export default function Karakterler(props) {
-  const [open, setOpen] = useState("1");
+  const [open, setOpen] = useState(0);
   const { characters } = props;
   const toggle = (id) => {
     if (open === id) {

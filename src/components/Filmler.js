@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Filmler() {
-  return <div>Filmler</div>;
+export default function Filmler(props) {
+  return <div>{props.name}</div>;
 }

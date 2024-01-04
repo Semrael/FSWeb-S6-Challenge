@@ -7,7 +7,7 @@ export default function Header(props) {
     justify-content: space-between;
   `;
 
-  const { ChangeHandler, search } = props;
+  const { changeHandler, search } = props;
   return (
     <StyHeader>
       <h1>Start Wars</h1>
@@ -15,9 +15,9 @@ export default function Header(props) {
         type="text"
         placeholder="Search"
         value={search}
-        onChange={ChangeHandler}
-        name=""
-        Search
+        onChange={changeHandler}
+        name="Search"
+        autoFocus
       />
     </StyHeader>
   );
